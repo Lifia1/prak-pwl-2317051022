@@ -59,7 +59,8 @@
         margin-bottom: 1rem;
     }
 
-    .user-table {
+    /* Tabel bergaya sama seperti list user */
+    .matakuliah-table {
         width: 100%;
         background: #fff;
         border-radius: 8px;
@@ -67,26 +68,27 @@
         border: 1px solid #e5e5e5;
     }
 
-    .user-table thead {
+    .matakuliah-table thead {
         background: #6b4f2c;
         color: #fff;
     }
 
-    .user-table th,
-    .user-table td {
+    .matakuliah-table th,
+    .matakuliah-table td {
         padding: 0.85rem 1rem;
         text-align: left;
         font-size: 0.95rem;
     }
 
-    .user-table tbody tr:nth-child(even) {
+    .matakuliah-table tbody tr:nth-child(even) {
         background: #fafafa;
     }
 
-    .user-table tbody tr:hover {
+    .matakuliah-table tbody tr:hover {
         background: #f3f0eb;
     }
 
+    /* Badge mirip list user */
     .badge {
         display: inline-block;
         padding: 0.35rem 0.7rem;
@@ -100,32 +102,30 @@
         color: #fff;
     }
 
-    .badge-kelas {
+    .badge-sks {
         background: #d4c2a8;
         color: #444;
     }
 </style>
 
 <div class="container">
-    <h1>Daftar Pengguna</h1>
+    <h1>Daftar Mata Kuliah</h1>
     
-    <table class="user-table">
+    <table class="matakuliah-table">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nama</th>
-                <th>NIM</th>
-                <th>Kelas</th>
+                <th>Nama Mata Kuliah</th>
+                <th>SKS</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($users as $user)
-                <tr>
-                    <td><span class="badge badge-id">#{{ $user->id }}</span></td>
-                    <td>{{ $user->nama }}</td>
-                    <td>{{ $user->nim }}</td>
-                    <td><span class="badge badge-kelas">{{ $user->nama_kelas }}</span></td>
-                </tr>
+            @foreach ($mks as $mk)
+            <tr>
+                <td><span class="badge badge-id">#{{ $mk->id }}</span></td>
+                <td>{{ $mk->nama_mk }}</td>
+                <td><span class="badge badge-sks">{{ $mk->sks }}</span></td>
+            </tr>
             @endforeach
         </tbody>
     </table>

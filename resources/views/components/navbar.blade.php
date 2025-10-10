@@ -22,6 +22,12 @@
           <a class="nav-link px-2" href="{{ route('user.create') }}">
             <i class="bi bi-plus-circle me-1"></i> Tambah User
           </a>
+          <a class="nav-link px-2" href="{{ route('matakuliah.store') }}">
+            <i class="bi bi-list-ul me-1"></i> Mata Kuliah
+          </a>
+          <a class="nav-link px-2" href="{{ route('matakuliah.create') }}">
+            <i class="bi bi-plus-circle me-1"></i> Tambah Mata Kuliah
+          </a>
         </li>
 
 
