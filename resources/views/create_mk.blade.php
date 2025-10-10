@@ -33,6 +33,7 @@
         border-radius: 6px;
         margin-bottom: 1rem;
         transition: border-color 0.2s;
+        box-sizing: border-box;
     }
     input:focus, select:focus {
         border-color: #6b4f2c;
@@ -51,28 +52,43 @@
     .btn-submit:hover {
         background: #523a20;
     }
+    .error-message {
+        color: #d32f2f;
+        font-size: 0.85rem;
+        margin-top: -0.5rem;
+        margin-bottom: 1rem;
+    }
 </style>
 
 <div class="form-container">
-    <h1>Buat Pengguna Baru</h1>
-
+    <h1>Buat Mata Kuliah Baru</h1>
+    
     <div class="form-card">
-        <form action="{{ route('user.store') }}" method="POST">
+        <form action="{{ route('matakuliah.store') }}" method="POST">
             @csrf
-            <label for="nama">Nama</label>
-            <input type="text" id="nama" name="nama" required>
-
-            <label for="nim">NIM</label>
-            <input type="text" id="nim" name="nim" required>
-
-            <label for="kelas_id">Kelas</label>
-            <select name="kelas_id" id="kelas_id" required>
-                <option value="">Pilih Kelas</option>
-                @foreach ($kelas as $kelasItem)
-                    <option value="{{ $kelasItem->id }}">{{ $kelasItem->nama_kelas }}</option>
-                @endforeach
-            </select>
-
+            
+            <label for="nama_mk">Nama Mata Kuliah</label>
+            <input type="text" 
+                   id="nama_mk" 
+                   name="nama_mk" 
+                   value="{{ old('nama_mk') }}"
+                   required>
+            @error('nama_mk')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
+            
+            <label for="sks">SKS</label>
+            <input type="number" 
+                   id="sks" 
+                   name="sks" 
+                   value="{{ old('sks') }}"
+                   min="1" 
+                   max="6"
+                   required>
+            @error('sks')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
+            
             <button type="submit" class="btn-submit">Submit</button>
         </form>
     </div>

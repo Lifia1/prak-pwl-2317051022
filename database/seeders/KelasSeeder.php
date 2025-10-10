@@ -10,6 +10,7 @@ class KelasSeeder extends Seeder
 {
     public function run(): void
     {
+        
         $data = [
             'A',
             'B',
